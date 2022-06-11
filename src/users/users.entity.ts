@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('users')
 export class UserEntity {
@@ -13,6 +13,9 @@ export class UserEntity {
 
     @Column()
     readonly password: string;
+
+    @CreateDateColumn({type: "timestamp"})
+    readonly createdAt: Date;
 
     constructor(email: string, password: string) {
         this.email = email;

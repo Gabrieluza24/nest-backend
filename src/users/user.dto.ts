@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsDefined, IsNotEmpty, IsEmail, Matches, } from 'class-validator';
-
+import { CreateDateColumn } from "typeorm";
 
 export class UserDTO {
     readonly id?: string;
@@ -15,9 +15,12 @@ export class UserDTO {
     @Matches(/^[A-z0-9*/+\-$%&]{8,16}$/)
     readonly password: string;
 
-    constructor(id: string, email: string, password: string) {
+    readonly createdAt?: Date;
+    
+    constructor(id: string, email: string, password: string, createdAt:Date) {
         this.id = id;
         this.email = email;
         this.password = password;
+        this.createdAt = createdAt
     }
 }
