@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { CategoriesDTO } from "./categories.dto";
-import { CategoriesEntity } from "./categories.entiy";
+import { CategoriesEntity } from "./categories.entity";
 
 @Injectable()
 export class CategoriesMapper {
@@ -11,7 +11,6 @@ export class CategoriesMapper {
             CategoriesDTO.title,
             CategoriesDTO.description,
             CategoriesDTO.idParentCategory,
-            CategoriesDTO.softDelete
         );
     }
 
@@ -24,7 +23,6 @@ export class CategoriesMapper {
             CategoriesEntity.idParentCategory,
             CategoriesEntity.createDate,
             CategoriesEntity.updateDate,
-            CategoriesEntity.softDelete
         );
     }
 

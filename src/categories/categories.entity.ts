@@ -1,4 +1,4 @@
-import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import * as bcrypt from 'bcryptjs';
 
 @Entity('categories')
@@ -22,10 +22,10 @@ export class CategoriesEntity {
     @CreateDateColumn({ type: "timestamp" })
     readonly createDate: Date;
 
-    @CreateDateColumn({ type: "timestamp" })
+    @UpdateDateColumn()
     readonly updateDate: Date;
 
-    @Column()
+    @DeleteDateColumn()
     readonly softDelete: Date;
 
     constructor(
@@ -33,13 +33,11 @@ export class CategoriesEntity {
         title: string,
         description: string,
         idParentCategory: number,
-        softDelete: Date
     ) {
         this.code = code;
         this.title = title;
         this.description = description;
         this.idParentCategory = idParentCategory;
-        this.softDelete = softDelete;
     }
 
 }

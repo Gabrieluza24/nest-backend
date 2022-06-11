@@ -6,6 +6,7 @@ import { UserEntity } from './users/users.entity';
 import { rootCertificates } from 'tls';
 import { AuthModule } from './auth/auth.module';
 import { CategoriesModule } from './categories/categories.module';
+import { CategoriesEntity } from './categories/categories.entity';
 
 
 @Module({
@@ -17,7 +18,7 @@ import { CategoriesModule } from './categories/categories.module';
       username: 'root',
       password: '',
       database: 'db-pt',
-      entities: [UserEntity],
+      entities: [UserEntity,CategoriesEntity],
       synchronize: true,
       // type: 'mysql',
       // host: process.env.DB_HOST,

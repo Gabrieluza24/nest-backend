@@ -1,10 +1,13 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsNumber, MaxLength, MinLength } from "class-validator";
+import { IsDate, IsNotEmpty, IsNumber, IsOptional, MaxLength, MinLength } from "class-validator";
 
 export class CategoriesDTO {
 
+    @ApiProperty()
+    @IsNumber()
+    @IsOptional()
     readonly id?: number;
-
+    
     @ApiProperty()
     @MinLength(2)
     @MaxLength(10)
@@ -22,15 +25,13 @@ export class CategoriesDTO {
 
     @ApiProperty()
     @IsNumber()
-    readonly idParentCategory: number;
+    @IsOptional()
+    readonly idParentCategory?: number;
 
-    @IsDate()
     readonly createDate?: Date;
 
-    @IsDate()
     readonly updateDate?: Date;
 
-    @IsDate()
     readonly softDelete?: Date;
 
     constructor(
@@ -41,7 +42,6 @@ export class CategoriesDTO {
         idParentCategory: number,
         createDate: Date,
         updateDate: Date,
-        softDelete: Date
     ) {
         this.id = id;
         this.code = code;
@@ -50,6 +50,5 @@ export class CategoriesDTO {
         this.idParentCategory = idParentCategory;
         this.createDate = createDate;
         this.updateDate = updateDate;
-        this.softDelete = softDelete;
     }
 }
