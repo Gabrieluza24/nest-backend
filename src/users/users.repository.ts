@@ -22,4 +22,8 @@ export class UsersRepository {
         return this.usersRepository.save(newUser);
     }
 
+    getUser(email:string): Promise<UserEntity>{
+        return this.usersRepository.findOneBy({email:email})
+    }
+
 }

@@ -21,4 +21,13 @@ export class UsersService {
         const newUser: UserEntity = await this.usersRepository.CreateUser(userDTO);
         return this.mapper.entityToDto(newUser);
     }
+
+    async getUser(email: string): Promise<UserDTO> {
+        const user: UserEntity = await this.usersRepository.getUser(email);
+        console.log("🚀 ~ file: users.service.ts ~ line 27 ~ UsersService ~ getUser ~ user", user)
+        if(user != null){
+            return this.mapper.entityToDto(user);
+        }
+        else return user
+    }
 }

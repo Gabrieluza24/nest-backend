@@ -5,6 +5,7 @@ import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from './users/users.entity';
 import { rootCertificates } from 'tls';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
@@ -27,7 +28,8 @@ import { rootCertificates } from 'tls';
       // entities: [UserEntity],
       // synchronize: !!process.env.DB_SYNC
     }),
-    UsersModule],
+    UsersModule,
+    AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
