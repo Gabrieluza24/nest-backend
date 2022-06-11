@@ -8,8 +8,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   
   const options = new DocumentBuilder()
-    .setTitle('Nest Workshop')
-    .setDescription('Nest Workshop')
+    .setTitle('Nest Backend')
+    .setDescription('Pervolare Test')
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, options);
