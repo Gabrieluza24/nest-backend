@@ -15,12 +15,12 @@ export class UserDTO {
     @Matches(/^[A-z0-9*/+\-$%&]{8,16}$/)
     readonly password: string;
 
-    readonly createdAt?: Date;
+    readonly createDate?: Date;
     
-    constructor(id: string, email: string, password: string, createdAt:Date) {
+    constructor(id: string, email: string, password: string, createDate:Date) {
         this.id = id;
         this.email = email;
         this.password = password;
-        this.createdAt = createdAt
+        this.createDate = createDate
     }
 }

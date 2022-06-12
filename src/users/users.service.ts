@@ -24,7 +24,6 @@ export class UsersService {
 
     async getUser(email: string): Promise<UserDTO> {
         const user: UserEntity = await this.usersRepository.getUser(email);
-        console.log("🚀 ~ file: users.service.ts ~ line 27 ~ UsersService ~ getUser ~ user", user)
         if(user != null){
             return this.mapper.entityToDto(user);
         }

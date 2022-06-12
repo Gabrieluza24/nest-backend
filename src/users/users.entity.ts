@@ -17,7 +17,7 @@ export class UserEntity {
     password: string;
 
     @CreateDateColumn({ type: "timestamp" })
-    readonly createdAt: Date;
+    readonly createDate: Date;
 
     constructor(email: string, password: string) {
         this.email = email;
