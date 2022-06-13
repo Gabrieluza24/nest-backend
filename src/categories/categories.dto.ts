@@ -24,7 +24,6 @@ export class CategoriesDTO {
     readonly description: string;
 
     @ApiProperty()
-    @IsNumber()
     @IsOptional()
     readonly idParentCategory?: number;
 

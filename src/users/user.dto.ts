@@ -10,10 +10,9 @@ export class UserDTO {
     readonly email: string;
 
     @ApiProperty()
-    @IsDefined()
     @IsNotEmpty()
-    @Matches(/^[A-z0-9*/+\-$%&]{8,16}$/)
-    readonly password: string;
+    @Matches(/^[A-z0-9*/+\-$%&]*$/)
+    readonly password?: string;
 
     readonly createDate?: Date;
     

@@ -19,7 +19,9 @@ export class UsersController {
         @Body() userDto: UserDTO,
     ): Promise<UserDTO> {
         const user = await this.UsersService.CreateUser(userDto);
-        return user;
+        
+        const { password, ...result } = user;
+        return result;
     }
 
 }
