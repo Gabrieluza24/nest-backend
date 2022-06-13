@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { CategoriesDTO } from "./categories.dto";
+import { CategoriesDTO } from "../domain/categories.dto";
 import { CategoriesEntity } from "./categories.entity";
 
 @Injectable()

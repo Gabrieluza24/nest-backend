@@ -2,9 +2,9 @@ import { BadRequestException, Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { throwError } from "rxjs";
 import { DeleteResult, Repository } from "typeorm";
-import { CategoriesDTO } from "./categories.dto";
-import { CategoriesEntity } from "./categories.entity";
-import { CategoriesMapper } from "./categories.mapper";
+import { CategoriesDTO } from "../domain/categories.dto";
+import { CategoriesEntity } from "../infrastructure/categories.entity";
+import { CategoriesMapper } from "../infrastructure/categories.mapper";
 
 @Injectable()
 export class CategoriesRepository {
@@ -25,7 +25,6 @@ export class CategoriesRepository {
 
     CreateCategory(CategoriesDTO: CategoriesDTO): Promise<CategoriesEntity> {
         const category = this.mapper.dtoToEntity(CategoriesDTO);
-        console.log("🚀 ~ file: categories.repository.ts ~ line 28 ~ CategoriesRepository ~ CreateCategory ~ category", category)
         return this.categoriesRepository.save(category);
     }
 

@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { UserDTO } from "./user.dto";
+import { UserDTO } from "../domain/user.dto";
 import { UserEntity } from "./users.entity";
 
 @Injectable()

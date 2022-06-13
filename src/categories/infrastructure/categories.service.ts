@@ -1,8 +1,8 @@
 import { Injectable } from "@nestjs/common";
-import { CategoriesDTO } from "./categories.dto";
+import { CategoriesDTO } from "../domain/categories.dto";
 import { CategoriesEntity } from "./categories.entity";
 import { CategoriesMapper } from "./categories.mapper";
-import { CategoriesRepository } from "./categories.repository";
+import { CategoriesRepository } from "../application/categories.repository";
 
 @Injectable()
 export class CategoriesService {
@@ -24,9 +24,8 @@ export class CategoriesService {
     
         async CreateCategory(CategoryDTO: CategoriesDTO): Promise<CategoriesDTO> {
             const category: CategoriesEntity = await this.categoriesRepository.CreateCategory(CategoryDTO);
-            const a = this.mapper.entityToDto(category);
-            console.log("🚀 ~ file: categories.service.ts ~ line 28 ~ CategoriesService ~ CreateCategory ~ a", a)
-            return a
+            return this.mapper.entityToDto(category);
+            
         }
       
         async UpdateCategory(CategoryDTO: CategoriesDTO): Promise<CategoriesDTO> {
