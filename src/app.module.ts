@@ -13,10 +13,10 @@ import { CategoriesEntity } from './categories/infrastructure/categories.entity'
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: 'database',
       port: 3306,
       username: 'root',
-      password: '',
+      password: 'pass',
       database: 'db-pt',
       entities: [UserEntity,CategoriesEntity],
       synchronize: true,

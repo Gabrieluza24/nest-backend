@@ -1,0 +1,46 @@
+version: '3.9'
+
+#create a volume for the my sql container.To ensure Data persists after my sql container is stopped
+volumes:
+  datafiles:
+
+services:
+  #DataBase Service
+  database:
+    image: mysql:8.0.22
+    networks:
+      - application-net  
+    ports:
+      - "3306:3306"
+    volumes:
+      - datafiles:/var/lib/mysql
+    restart: always
+    environment: 
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: db-pt
+  
+  api:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    depends_on: 
+      - database
+    networks:
+      - application-net  
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: localhost
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASS: pass
+      DB_NAME: db-pt
+      DB_SYNC: true
+    restart: always
+
+networks:
+  application-net:
+    driver: bridge
+
+
+  
