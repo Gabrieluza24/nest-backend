@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { UserDTO } from '../domain/user.dto';
-import { UserEntity } from './users.entity';
-import { UserMapper } from './users.mapper';
-import { UsersRepository } from '../application/users.repository';
+import { UserDTO } from '../dtos/user.dto';
+import { UserEntity } from '../../domain/entities/users.entity';
+import { UserMapper } from '../../infrastructure/mappers/users.mapper';
+import { UsersRepository } from '../../infrastructure/repositories/users.repository';
+import { UserResponseDto } from '../dtos/user-response.dto';
 
 @Injectable()
 export class UsersService {
@@ -12,13 +13,14 @@ export class UsersService {
         private mapper: UserMapper
         ){}
 
-    async getAllUsers(): Promise<UserDTO[]> {
+    async getAllUsers(): Promise<UserResponseDto[]> {
         const users: UserEntity[] = await this.usersRepository.getAllUsers()
-        return users.map(user => this.mapper.entityToDto(user));
+        return users.map(user => new UserResponseDto(user.id, user.email, user.createDate));
     }
 
     async CreateUser(userDTO: UserDTO): Promise<UserDTO> {
-        const newUser: UserEntity = await this.usersRepository.CreateUser(userDTO);
+        const newUser: UserEntity = await this.mapper.dtoToEntity(userDTO);
+        await this.usersRepository.create(newUser);
         return this.mapper.entityToDto(newUser);
     }
 

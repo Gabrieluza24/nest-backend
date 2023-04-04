@@ -1,6 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDefined, IsNotEmpty, IsEmail, Matches, } from 'class-validator';
-import { CreateDateColumn } from "typeorm";
+import { IsNotEmpty, IsEmail, Matches, } from 'class-validator';
 
 export class UserDTO {
     readonly id?: string;

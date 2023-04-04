@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
-import { UserDTO } from "../domain/user.dto";
-import { UserEntity } from "./users.entity";
+import { UserDTO } from "../../application/dtos/user.dto";
+import { UserEntity } from "../../domain/entities/users.entity";
 
 @Injectable()
 export class UserMapper {

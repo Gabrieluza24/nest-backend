@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserEntity } from './users/infrastructure/users.entity';
+import { UserEntity } from './users/domain/entities/users.entity';
 import { rootCertificates } from 'tls';
 import { AuthModule } from './auth/auth.module';
 import { CategoriesModule } from './categories/categories.module';
@@ -13,10 +13,10 @@ import { CategoriesEntity } from './categories/infrastructure/categories.entity'
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'database',
+      host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'pass',
+      password: '',
       database: 'db-pt',
       entities: [UserEntity,CategoriesEntity],
       synchronize: true,

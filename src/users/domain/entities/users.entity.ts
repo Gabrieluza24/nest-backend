@@ -1,9 +1,10 @@
 import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { UserInterface } from "../interfaces/user.interface";
 import * as bcrypt from 'bcryptjs';
 
 
 @Entity('users')
-export class UserEntity {
+export class UserEntity implements UserInterface {
 
     @PrimaryGeneratedColumn()
     readonly id: string;
